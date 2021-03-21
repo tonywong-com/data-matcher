@@ -56,8 +56,8 @@ Total run time: 00:00:00.449
 With this algorithm, it is challenging to achieve horizontal scalability by running a shared memory store (e.g. Redis) and a cluster of compute nodes.
 
 When processing each row, a compute node needs to lock the whole hash-table for both read and write, to avoid this race condition:
-* NodeA look up phone from shared memory, thinking it is unique.
-* While NodeA continues processing the same row, NodeB write this phone to the shared memory.  However, NodeB's record is actually a duplicate of NodeA's.
+* NodeA look up phone from shared memory, thinking its user is unique.
+* While NodeA continues processing the same row, NodeB write this phone to the shared memory, also thinking its user is unique.  However, NodeB's record is actually a duplicate of NodeA's.
 * Without table-locking, NodeA misses the chance to detect this deplicate, resulting in incorrect result.
 
 Locking the whole shared memory most of the time defeats the purpose of horizontal scaling.
