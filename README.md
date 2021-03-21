@@ -31,7 +31,7 @@ This script is designed to use an average O(n) linear time algorithm.  It aims t
 
 # Vertical Scalability
 
-Vertical scalability can be achieved, bounded by memory limitation.
+Vertical scalability can be achieved through linear time complexity, bounded by memory limitation.
 
 * The loading of CSV data is memory efficient because it scans the input data line-by-line and doesn't load the input data set into memory.
 * However, this algorithm relies on the lookup hash-table being stored in memory.  We can only scale up this solution until all available memory is used up.
