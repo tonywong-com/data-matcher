@@ -35,7 +35,6 @@ class MatcherService
   end
 
   def run
-
     # Build paths
     input_path = @options.dig(:path)
     input_filename = File.basename(input_path)
@@ -60,10 +59,10 @@ class MatcherService
     end
     puts
 
-    # move file from temp to output folder
+    # Move file from temp to output folder
     FileUtils.mv(temp_file, output_path, force: true)
 
-    # return stats
+    # Return stats
     { output_path: output_path,
       total_rows: @total_rows,
       total_duplicates: @total_duplicates,
