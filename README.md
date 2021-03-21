@@ -65,5 +65,5 @@ Locking the whole shared memory most of the time defeats the purpose of horizont
 If we are to keep this algorithm, another way to scale horizontally is to shard the input data set based on one of its fields, or add constraint to the matching rules to make sharding possible.  Here are some examples:
 
 * Shard the user records by regions, and only find duplicates within a region.
-* Shard the user records by last_name.  This essentially introduce a new matching rule stating that a matching user must share the same last name.  Sharding the data by last_name's leading characters, allows almost inifinite numbers of data shards for horizontal scalability.
+* Shard the user records by last_name.  This essentially introduces a new matching rule stating that a matching user must share the same last name.  Sharding the data by last_name's leading characters, allows almost inifinite numbers of data shards for horizontal scalability.
 
