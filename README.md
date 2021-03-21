@@ -27,7 +27,7 @@ bundle exec ruby matcher.rb --help
 
 # Algorithm
 
-This script is designed to use an average O(n) linear time algorithm.  It aims to scan the data set only once, and takes advantage of the average O(1) time complexity of hash table for read/write and record matching.
+This script is designed to use an O(n) linear time algorithm.  It aims to scan the data set only once, and takes advantage of the average O(1) time complexity of hash table for read/write and record matching.
 
 # Vertical Scalability
 
