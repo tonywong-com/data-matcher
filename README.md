@@ -31,7 +31,7 @@ This script is designed to use an average O(n) linear time algorithm.  It aims t
 
 # Vertical Scalability
 
-Vertical scalability can be achieved, bounded by memory limitation.
+Vertical scalability can be achieved through linear time complexity, bounded by memory limitation.
 
 * The loading of CSV data is memory efficient because it scans the input data line-by-line and doesn't load the input data set into memory.
 * However, this algorithm relies on the lookup hash-table being stored in memory.  We can only scale up this solution until all available memory is used up.
@@ -55,9 +55,9 @@ Total run time: 00:00:00.449
 
 With this algorithm, it is challenging to achieve horizontal scalability by running a shared memory store (e.g. Redis) and a cluster of compute nodes.
 
-When processing each row, a compute node needs to lock the whole hash_table for both read and write, to avoid this race condition:
-* NodeA look up phone from shared memory, thinking it is unique.
-* While NodeA continues processing the same row, NodeB write this phone to the shared memory.  However, NodeB's record is actually a duplicate of NodeA's.
+When processing each row, a compute node needs to lock the whole hash-table for both read and write, to avoid this race condition:
+* NodeA look up phone from shared memory, thinking its user is unique.
+* While NodeA continues processing the same row, NodeB write this phone to the shared memory, also thinking its user is unique.  However, NodeB's record is actually a duplicate of NodeA's.
 * Without table-locking, NodeA misses the chance to detect this deplicate, resulting in incorrect result.
 
 Locking the whole shared memory most of the time defeats the purpose of horizontal scaling.
@@ -65,5 +65,5 @@ Locking the whole shared memory most of the time defeats the purpose of horizont
 If we are to keep this algorithm, another way to scale horizontally is to shard the input data set based on one of its fields, or add constraint to the matching rules to make sharding possible.  Here are some examples:
 
 * Shard the user records by regions, and only find duplicates within a region.
-* Shard the user records by last_name.  This essentially introduce a new matching rule stating that a matching user must share the same last name.  Sharding the data by last_name's leading characters, allows almost inifinite numbers of data shards for horizontal scalability.
+* Shard the user records by last_name.  This essentially introduces a new matching rule stating that a matching user must share the same last name.  Sharding the data by last_name's leading characters, allows almost inifinite numbers of data shards for horizontal scalability.
 
