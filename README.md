@@ -25,11 +25,11 @@ bundle exec ruby matcher.rb --help
 
 * Both input and output data files can be found in the `./data` folder
 
-# Algorithm
+## Algorithm
 
 This script is designed to use an O(n) linear time algorithm.  It aims to scan the data set only once, and takes advantage of the average O(1) time complexity of hash table for read/write and record matching.
 
-# Vertical Scalability
+## Vertical Scalability
 
 Vertical scalability can be achieved through linear time complexity, bounded by memory limitation.
 
@@ -51,7 +51,7 @@ Total run time: 00:00:00.449
 
 * Based on this timing, a 40 million line CSV is estimated to take 15 minutes to process.
 
-# Horizontal Scalability
+## Horizontal Scalability
 
 With this algorithm, it is challenging to achieve horizontal scalability by running a shared memory store (e.g. Redis) and a cluster of compute nodes.
 
