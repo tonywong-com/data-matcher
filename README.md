@@ -35,7 +35,7 @@ Vertical scalability can be achieved through linear time complexity, bounded by 
 
 * The loading of CSV data is memory efficient because it scans the input data line-by-line and doesn't load the input data set into memory.
 * However, this algorithm relies on the lookup hash-table being stored in memory.  We can only scale up this solution until all available memory is used up.
-* For example, the `memory_profiler` gem has been used to run against the CSV outer block in the `matcher_service`'s `run()` method, while using the `input3.csv` file with 20,001 records.   And here is the result:
+* For example, the `memory_profiler` gem was used to run against the CSV outer block in the `matcher_service`'s `run()` method, while using the `input3.csv` file with 20,001 records.   And here is the result:
 
 ```
 Total allocated: 58750659 bytes (827498 objects)
