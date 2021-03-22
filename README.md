@@ -49,7 +49,7 @@ Total retained:  2048909 bytes (39964 objects)
 Total run time: 00:00:00.449
 ```
 
-* Based on this timing, a 40 million line CSV is estimated to take 15 minutes to process.
+* Based on this timing, a 40 million line CSV is estimated to take 15 minutes to process, not accounting for other system level overhead due to large file size.
 
 ## Horizontal Scalability
 
