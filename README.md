@@ -31,11 +31,11 @@ This script is designed to use an O(n) linear time algorithm.  It aims to scan t
 
 ## Vertical Scalability
 
-Vertical scalability can be achieved through linear time complexity, bounded by memory limitation.
+Vertical scalability is achieved through linear time complexity, bounded by available memory.
 
 * The loading of CSV data is memory efficient because it scans the input data line-by-line and doesn't load the input data set into memory.
 * However, this algorithm relies on the lookup hash-table being stored in memory.  We can only scale up this solution until all available memory is used up.
-* For example, a memory_profiler has been used to run against the CSV outer loop in the `matcher_service`'s `run()` method, while using the `input3.csv` file with 20,001 records.   And here is the result:
+* For example, the `memory_profiler` gem was used to run against the CSV outer block in the `matcher_service`'s `run()` method, while using the `input3.csv` file with 20,001 records.   And here is the result:
 
 ```
 Total allocated: 58750659 bytes (827498 objects)
@@ -49,11 +49,11 @@ Total retained:  2048909 bytes (39964 objects)
 Total run time: 00:00:00.449
 ```
 
-* Based on this timing, a 40 million line CSV is estimated to take 15 minutes to process.
+* Based on this timing, a 40 million line CSV is estimated to take 15 minutes to process, not accounting for other system level overhead due to large file size.
 
 ## Horizontal Scalability
 
-With this algorithm, it is challenging to achieve horizontal scalability by running a shared memory store (e.g. Redis) and a cluster of compute nodes.
+With this algorithm, it is challenging to achieve horizontal scalability by running a shared memory store (e.g. Redis) and a cluster of compute nodes.  Cluster mode is currently not supported by this script.  
 
 When processing each row, a compute node needs to lock the whole hash-table for both read and write, to avoid this race condition:
 * NodeA look up phone from shared memory, thinking its user is unique.
