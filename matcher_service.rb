@@ -162,7 +162,7 @@ class MatcherService
     when 'phone'
       normalized_field_value = normalize_phone_number(field_value)
     else
-      normalized_field_value = field_value&.strip
+      normalized_field_value = field_value&.strip&.downcase
     end
     normalized_field_value
   end
