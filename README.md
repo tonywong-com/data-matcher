@@ -53,7 +53,7 @@ Total run time: 00:00:00.449
 
 ## Horizontal Scalability
 
-With this algorithm, it is challenging to achieve horizontal scalability by running a shared memory store (e.g. Redis) and a cluster of compute nodes.
+With this algorithm, it is challenging to achieve horizontal scalability by running a shared memory store (e.g. Redis) and a cluster of compute nodes.  Cluster mode is currently not supported by this script.  
 
 When processing each row, a compute node needs to lock the whole hash-table for both read and write, to avoid this race condition:
 * NodeA look up phone from shared memory, thinking its user is unique.
