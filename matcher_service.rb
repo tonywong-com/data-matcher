@@ -118,7 +118,7 @@ class MatcherService
     end
 
     # Update the lookup map
-    update_lookup_map(input_row, uid)
+    update_lookup_maps(input_row, uid)
 
     if @options.dig(:debug)
       puts "Processed row # #{row_num}"
@@ -133,7 +133,7 @@ class MatcherService
     output_row << [uid] + input_row
   end
 
-  def update_lookup_map(input_row, uid)
+  def update_lookup_maps(input_row, uid)
     @row_cache.each do |field_index, field_cache|
       field_value = input_row.dig(field_index)
       field_type = field_cache.dig(:field_type)
